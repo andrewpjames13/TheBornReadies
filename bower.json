@@ -1,0 +1,27 @@
+{
+  "name": "Name",
+  "version": "0.0.0",
+  "authors": [
+    "Legdevs <devs@legworkstudio.com>"
+  ],
+  "description": "Description.",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "modernizr": "~2.7.2",
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {
+    "meyer-reset": "*",
+    "jquery-easing": "*",
+    "history.js": "~1.8.0"
+  }
+}

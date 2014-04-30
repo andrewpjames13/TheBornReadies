@@ -1,0 +1,59 @@
+{
+  "name": "Name",
+  "version": "0.0.1",
+  "description": "Description.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:legworkstudio/rip-it-with-gulp.git"
+  },
+  "browser": {
+    "plugin": "./src/javascript/vendor/jquery-plugin.js"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "coffeeify",
+      "hbsfy"
+    ]
+  },
+  "browserify-shim": {
+    "plugin": {
+      "exports": "plugin",
+      "depends": [
+        "jquery:$"
+      ]
+    }
+  },
+  "devDependencies": {
+    "browserify-shim": "~3.4.1",
+    "browserify": "~3.36.0",
+    "coffeeify": "~0.6.0",
+    "connect": "~2.14.3",
+    "connect-livereload": "~0.3.2",
+    "express": "~3.5.0",
+    "gulp-changed": "~0.3.0",
+    "gulp-compass": "~1.1.8",
+    "gulp-ruby-sass": "~0.4.0",
+    "gulp-concat": "~2.1.7",
+    "gulp-clean": "~0.2.4",
+    "gulp-minify-css": "~0.3.2",
+    "gulp-uglify": "~0.2.1",
+    "gulp-autoprefixer": "0.0.6",
+    "gulp-imagemin": "~0.1.5",
+    "gulp-livereload": "~1.2.0",
+    "gulp-notify": "~1.2.4",
+    "gulp-open": "~0.2.8",
+    "gulp": "~3.6.0",
+    "hbsfy": "~1.3.2",
+    "vinyl-source-stream": "~0.1.1",
+    "gulp-usemin": "~0.3.3",
+    "gulp-eco": "0.0.1",
+    "tiny-lr": "0.0.5",
+    "bower": "^1.3.2",
+    "path": "^0.4.9",
+    "gulp-util": "^2.2.14"
+  },
+  "dependencies": {
+    "jquery": "~2.1.0"
+  }
+}
