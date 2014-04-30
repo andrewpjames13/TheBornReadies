@@ -23,6 +23,6 @@ Cd into the root of your new project:
 
 - Fire up server and watch with gulp `gulp`
 
-- Build minifed and concatenated poduction ready application `grunt dist`
+- Build minifed and concatenated poduction ready application `gulp dist`
 
-- Clean the tmp folder and start over `grunt clean`
+- Clean the tmp folder and start over `gulp clean`
