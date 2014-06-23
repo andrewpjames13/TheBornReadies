@@ -1,7 +1,7 @@
-var gulp = require('gulp');
-var path = require('path');
-var gutil = require('gulp-util');
-var config = require('../config');
+var gulp       = require('gulp');
+var path       = require('path');
+var gutil      = require('gulp-util');
+var config     = require('../config');
 
 gulp.task('watch', function(){
   gulp.watch('src/**/*.coffee', ['scripts']);
