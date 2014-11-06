@@ -1,13 +1,23 @@
-var gulp = require('gulp');
-var webserver = require('gulp-webserver');
-var config = require('../config');
+/*
+  ___                  
+ / __| ___ _ ___ _____ 
+ \__ \/ -_) '_\ V / -_)
+ |___/\___|_|  \_/\___|
+
+ You just got served. By a webserver. Because that's what they do ... 
+
+*/
+
+var gulp = require('gulp'),
+    webserver = require('gulp-webserver'),
+    config = require('../config');
 
 gulp.task('serve', function() {
   gulp.src(config.root)
     .pipe(webserver({
-      'fallback': 'index.html',
-      'livereload': true,
-      'open': true,
-      'port': config.port
+      'fallback': 'index.html',  // Set for single page app style
+      'livereload': true,        // Reload 'er on the fly?
+      'open': true,              // Open the default browser when this task is run?
+      'port': config.port        // Set a custom port
     }));
 });
