@@ -16,7 +16,7 @@ class Application
   | Construct.
   *----------------------------------------###
   constructor: ->
-    console.log('Application Constructor')
+    console.log('Application Constructor!')
 
 module.exports = Application
 

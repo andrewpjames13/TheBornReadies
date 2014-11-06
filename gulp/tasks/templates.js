@@ -1,6 +1,6 @@
-var gulp       = require('gulp');
-var eco        = require('gulp-eco');
-var concat     = require('gulp-concat');
+var gulp = require('gulp');
+var eco = require('gulp-eco');
+var concat = require('gulp-concat');
 
 gulp.task('templates', function () {
   return gulp.src('src/views/**/*.eco')

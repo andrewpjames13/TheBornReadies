@@ -1,15 +1,13 @@
-var connect = require('connect');
-var gulp    = require("gulp");
-var http    = require('http');
-var config  = require('../config');
-var ps      = require('connect-pushstate/lib/pushstate').pushState;
+var gulp = require('gulp');
+var webserver = require('gulp-webserver');
+var config = require('../config');
 
-gulp.task('serve', function(){
-  var app = connect()
-    .use(connect.logger('dev'))
-    .use(ps())
-    .use(connect.static(config.root));
-
-  http.createServer(app).listen(config.port);
+gulp.task('serve', function() {
+  gulp.src(config.root)
+    .pipe(webserver({
+      'fallback': 'index.html',
+      'livereload': true,
+      'open': true,
+      'port': config.port
+    }));
 });
-
