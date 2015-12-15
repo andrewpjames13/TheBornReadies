@@ -18,7 +18,52 @@
 	</head>
 	<body>
 
-		<h1>Check you out.</h1>
+		<div class="top-border"><div class="paper-bg"></div></div>
+	    <div class="right-border"><div class="paper-bg"></div></div>
+	    <div class="bottom-border"><div class="paper-bg"></div></div>
+	    <div class="left-border"><div class="paper-bg"></div></div>
+	    <nav id="music-menu" class="menu" onmouseover="stopTimeOut()">
+	      <button class="trigger" onclick="toggleMenu()">
+	        <svg viewBox="0 0 16.8 21.4">
+	        <g>
+	        	<rect x="0" y="5.9" fill="#A29060" width="4.6" height="15.5"></rect>
+	        	<rect x="6.1" y="0" fill="#A29060" width="4.6" height="21.4"></rect>
+	        	<rect x="12.3" y="10.7" fill="#A29060" width="4.6" height="10.7"></rect>
+	        </g>
+	        </svg>
+	      </button>
+	      <ul class="menu-controls">
+	        <li>
+	          <button onclick="playToPause()">
+	            <svg id="play-icon" viewBox="0 0 8.9 10.3" class="hide">
+	            	<polygon fill="#A29060" points="8.9,5.1 0,0 0,10.3 8.9,5.1 0,0 0,10.3"></polygon>
+	            </svg>
+	          </button>
+	          <button onclick="pauseToPlay()">
+	            <svg id="pause-icon" viewBox="0 0 7.3 9.5">
+	              <path fill="#A29060" d="M2.8,9.5H0V0h2.8V9.5z M7.3,0H4.5v9.5h2.8V0z"></path>
+	            </svg>
+	          </button>
+	        </li>
+	        <li>
+	          <button onclick="shuffleSong()">
+	            <svg id="shuffle-icon" viewBox="0 0 16.8 11.5">
+	            <path fill="#A29060" d="M2.1,3H0V1.3h2.1c1.6,0,3.1,0.6,4.2,1.8c0,0.1-0.9,1.5-0.9,1.5C4.6,3.6,3.4,3,2.1,3z
+	            	 M16.8,9.3l-3.6-2.3v1.5H12c-1.3,0-2.5-0.6-3.3-1.6c0,0-0.9,1.4-0.9,1.5c1.1,1.2,2.6,1.8,4.2,1.8h1.2l0,1.4L16.8,9.3z M16.8,2.2
+	            	L13.2,0l0,1.4H12c-1.9,0-3.8,1-4.8,2.7L5.6,6.6c-0.7,1.2-2,1.9-3.4,1.9H0v1.6h2.1c1.9,0,3.8-1,4.8-2.7l1.6-2.6C9.3,3.7,10.6,3,12,3
+	            	h1.2l0,1.5L16.8,2.2z"></path>
+	            </svg>
+	          </button>
+	        </li>
+	        <li>
+	          <button onclick="nextSong()">
+	            <svg id="next-icon" viewBox="0 0 14.4 9.7">
+	            	<polygon fill="#A29060" points="6,9.7 6,6.2 0,9.7 0,0 6,3.5 6,0 14.4,4.8"></polygon>
+	            </svg>
+	          </button>
+	        </li>
+	      </ul>
+	    </nav>
 
 		<!-- build:js2 scripts/vendor.min.js -->
 		<script src="/vendor/jquery/dist/jquery.js"></script>
@@ -33,5 +78,92 @@
 		<script src="/js/app.js"></script>
 		<script src="/js/templates.js"></script>
 		<!-- endbuild -->
+		<script>
+			"use strict";
+			var pauseIcon = document.getElementById("pause-icon");
+			var playIcon = document.getElementById('play-icon');
+			var tbrSongs = ["You Really Turn Me On", "Wildside", "Get After It", "Fallen"];
+			var songInt = 0;
+			var nowPlaying = new Audio("songs/" + tbrSongs[songInt] + ".mp3");
+		//    nowPlaying.volume = 0.1;
+		//    figure out fade in audio
+			nowPlaying.play();
+
+		//  Player controls
+			var pauseToPlay = function(){
+			 pauseIcon.setAttribute("class", "hide");
+			 playIcon.removeAttribute("class");
+			 nowPlaying.pause();
+			};
+			var playToPause = function(){
+			 playIcon.setAttribute("class", "hide");
+			 pauseIcon.removeAttribute("class");
+			 nowPlaying.play();
+			};
+			var nextSong = function(){
+				if (songInt < tbrSongs.length - 1){
+					songInt += 1;
+					stopAndStartNewSong(songInt);
+				}else{
+					songInt = 0;
+					stopAndStartNewSong(songInt);
+				}
+				playNextWhenSongEnds();
+			};
+			var randomSongInt = 0;
+			var shuffleSong = function(){
+				randomSongInt = Math.floor(Math.random() * (3 + 1));
+				if (randomSongInt == songInt){
+					randomSongInt = Math.floor(Math.random() * (3 + 1));
+					shuffleSong();
+				}else{
+					songInt = randomSongInt;
+					stopAndStartNewSong(songInt);
+				}
+				playNextWhenSongEnds();
+			};
+
+		//  functions for the player
+			var stopAndStartNewSong = function(songInt){
+				nowPlaying.pause();
+				nowPlaying = new Audio("songs/" + tbrSongs[songInt] + ".mp3");
+				nowPlaying.play();
+			};
+
+			var playNextWhenSongEnds = function(){
+				nowPlaying.addEventListener("ended", nextSong);
+			};
+			playNextWhenSongEnds();
+
+		//  Open and close player menu
+			var menuOpen = false;
+			var musicMenu = document.getElementById('music-menu');
+
+			var myTimeOut;
+			var looseFocusCloseMenu = function(){
+				myTimeOut = setTimeout(function(){
+					musicMenu.className = "menu";
+					menuOpen = false;
+				}, 800);
+			};
+
+			var stopTimeOut = function(){
+				if(menuOpen == true){
+					clearTimeout(myTimeOut);
+				}
+			};
+
+			var toggleMenu = function(){
+					if( menuOpen == false){
+						menuOpen = true;
+						musicMenu.className = "menu menu-open";
+						musicMenu.addEventListener("mouseleave", looseFocusCloseMenu);
+					} else {
+						menuOpen = false;
+						musicMenu.className = "menu";
+					}
+			}
+
+		</script>
 	</body>
 </html>
