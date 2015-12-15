@@ -1,0 +1,120 @@
+*, *:before, *:after
+  box-sizing: border-box
+
+#music-menu
+  width: 254px
+  height: 254px
+  bottom: 0
+  left: 0
+  position: absolute
+  margin: 0
+
+  &.menu
+    position: relative
+    display: inline-block
+    cursor: pointer
+    margin: 7em 0
+
+    button
+      width: 100%
+      height: 100%
+      cursor: pointer
+      border: none
+      background: none
+      padding: 0
+      margin: 0
+      outline: none
+      -webkit-tap-highlight-color: rgba(0,0,0,0)
+      -webkit-tap-highlight-color: transparent
+      svg
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        width: 15%
+
+    .trigger
+      width: 150px
+      height: 150px
+      border-radius: 50%
+      position: fixed
+      bottom: -1em
+      left: -1em
+      z-index: 998
+
+    .trigger:hover svg
+      transition: all .2s ease-in-out
+      width: 18%
+
+    &.menu-open
+      .trigger
+        border: 2px solid #a29060
+        svg
+          width: 18%
+      .menu-controls
+        li:first-child
+        	// -webkit-transform: scale3d(1, 1, 1) translate3d(34.14px, -239.14px, 0)
+        	transform: scale3d(1, 1, 1) translate3d(34.14px, -239.14px, 0)
+        li:nth-child(2)
+        	// -webkit-transform: scale3d(1, 1, 1) translate3d(137.14px, -211.14px, 0)
+        	transform: scale3d(1, 1, 1) translate3d(137.14px, -211.14px, 0)
+
+        li:nth-child(3)
+        	// -webkit-transform: scale3d(1, 1, 1) translate3d(169px, -108px, 0)
+        	transform: scale3d(1, 1, 1) translate3d(169px, -108px, 0)
+
+        li:hover #pause-icon
+          transition: all .2s ease-in-out
+          width: 25%
+
+        li:hover #shuffle-icon
+          transition: all .2s ease-in-out
+          width: 35%
+
+        li:hover #next-icon
+          transition: all .2s ease-in-out
+          width: 35%
+
+        li:hover #play-icon
+          transition: all .2s ease-in-out
+          width: 25%
+
+  .menu-controls
+    position: fixed
+    bottom: 0
+
+    li
+      width: 75px
+      height: 75px
+      border-radius: 50%
+      border: 2px solid #a29060
+      position: absolute
+      transform: scale3d(0.5, 0.5, 1)
+      transition: transform 0.25s ease-out
+
+    .hide
+      display: none
+
+    #shuffle-icon, #next-icon, #play-icon, #pause-icon
+      position: absolute
+      width: 30%
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%) scale(1)
+      animation: fade-in-out 1s
+
+    #play-icon, #pause-icon
+      width: 20%
+
+
+
+  // /* Chrome, Safari, Opera */
+  // @-webkit-keyframes fade-in-out
+  //   0%   opacity: 0
+  //   100% opacity: 1
+  //
+  //
+  // /* Standard syntax */
+  // @keyframes fade-in-out
+  //   0%   opacity: 0
+  //   100% opacity: 1
