@@ -96,7 +96,12 @@
         </li>
       </ul>
     </nav>
+		<div class="check1">
 
+		</div>
+		<div class="check2">
+
+		</div>
 		<!-- build:js2 scripts/vendor.min.js -->
 		<script src="/vendor/jquery/dist/jquery.js"></script>
 		<script src="/vendor/underscore/underscore.js"></script>
@@ -112,9 +117,18 @@
 		<!-- endbuild -->
 		<script>
 			"use strict";
-			var nav = document.getElementById('nav');
+			var navOpen = false;
 			var toggleNav = function(){
-				nav.setAttribute("class", "nav-container open")
+				if (navOpen == false) {
+					navOpen = true;
+					$('.nav-container').animate({opacity:".95"}, 200, function() {});
+					$('.nav-container').addClass('open');
+				}else {
+					navOpen = false;
+					$('.nav-container').animate({opacity:"0"}, 200, function() {
+						$('.nav-container').removeClass('open');
+					});
+				}
 			}
 			var pauseIcon = document.getElementById("pause-icon");
 			var playIcon = document.getElementById('play-icon');
