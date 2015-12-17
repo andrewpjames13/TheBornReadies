@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!--[if lt IE 9]> <html class="no-js weak" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -121,6 +120,28 @@
 		<!-- endbuild -->
 		<script>
 			"use strict";
+			var scrollCount = 1;
+			var startScoll = 0;
+			var st = 0;
+
+			$(window).scroll(function(e){
+				st = $(window).scrollTop()
+			   if (st > startScoll){
+			       // downscroll code
+						 console.log("hi");
+						 $('html,body').animate({
+							 scrollTop: document.documentElement.clientHeight
+							//  startScoll = st;
+						 }, 800);
+						 return false;
+			   } else {
+			      // upscroll code
+
+			   }
+
+			});
+
+
 			var navOpen = false;
 			var toggleNav = function(){
 				if (navOpen == false) {
