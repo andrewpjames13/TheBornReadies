@@ -6,13 +6,12 @@
   height: 254px
   bottom: 0
   left: 0
-  position: absolute
   margin: 0
   z-index: 995
 
 
   &.menu
-    position: relative
+    position: absolute
     display: inline-block
     cursor: pointer
     margin: 7em 0
@@ -49,7 +48,7 @@
 
     &.menu-open
       .trigger
-        border: 2px solid #a29060
+        border: 2px solid $gold
         svg
           width: 18%
       .menu-controls
@@ -88,7 +87,7 @@
       width: 75px
       height: 75px
       border-radius: 50%
-      border: 2px solid #a29060
+      border: 2px solid $gold
       position: absolute
       transform: scale3d(0.5, 0.5, 1)
       transition: transform 0.25s ease-out
