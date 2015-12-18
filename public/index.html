@@ -10,6 +10,7 @@
 
 		<!-- build:css styles/style.css -->
 		<link rel="stylesheet" href="/css/app.css">
+		<link rel="stylesheet" href="/vendor/fullPage.js-master/jquery.fullPage.css">
 		<!-- endbuild -->
 
 		<!-- build:js1 scripts/vendor_top.min.js -->
@@ -95,15 +96,17 @@
         </li>
       </ul>
     </nav>
-		<div id="home">
-			<div class="paper-bg"></div>
-			<div class="logo">
-				<img src="/images/the-born-readies-logo.svg" alt="" />
+		<div id="fullpage">
+			<div class="section" id="home">
+				<div class="paper-bg"></div>
+				<div class="logo">
+					<img src="/images/the-born-readies-logo.svg" alt="" />
+				</div>
 			</div>
+			<div class="section" id="about"></div>
+			<div class="section" id="merch"></div>
+			<div class="section" id="contact"></div>
 		</div>
-		<div id="about"></div>
-		<div id="merch"></div>
-		<div id="contact"></div>
 
 		<!-- build:js2 scripts/vendor.min.js -->
 		<script src="/vendor/jquery/dist/jquery.js"></script>
@@ -112,6 +115,8 @@
 		<script src="/vendor/jquery-easing/jquery.easing.js"></script>
 		<script src="/vendor/greensock/src/minified/TweenLite.min.js"></script>
 		<script src="/vendor/greensock/src/minified/easing/EasePack.min.js"></script>
+		<script src="/vendor/fullPage.js-master/jquery.fullPage.js"></script>
+
 		<!-- endbuild -->
 
 		<!-- build:js3 scripts/app.min.js -->
@@ -120,27 +125,9 @@
 		<!-- endbuild -->
 		<script>
 			"use strict";
-			var scrollCount = 1;
-			var startScoll = 0;
-			var st = 0;
-
-			$(window).scroll(function(e){
-				st = $(window).scrollTop()
-			   if (st > startScoll){
-			       // downscroll code
-						 console.log("hi");
-						 $('html,body').animate({
-							 scrollTop: document.documentElement.clientHeight
-							//  startScoll = st;
-						 }, 800);
-						 return false;
-			   } else {
-			      // upscroll code
-
-			   }
-
+			$(document).ready(function() {
+    		$('#fullpage').fullpage();
 			});
-
 
 			var navOpen = false;
 			var toggleNav = function(){
